@@ -46,7 +46,7 @@ Observer sur un réseau réel ce que j'ai configuré en simulation : comprendre 
 | TTL de la réponse | 116 (environ 12 routeurs traversés) |
 | Temps de réponse | 21,1 / 21,4 / 21,9 / 20,8 ms |
 
-![Capture ICMP](captures/wireshark-icmp.png)
+![Capture ICMP](Captures/wireshark-icmp.png)
 
 **Ce que j'en retiens :**
 - Pour joindre une adresse hors du réseau local, le PC envoie la trame à sa **passerelle** : la MAC de destination est celle de la box, l'IP de destination reste celle du serveur final.
@@ -66,7 +66,7 @@ Observer sur un réseau réel ce que j'ai configuré en simulation : comprendre 
 | Particularité | C'est **la box qui a interrogé mon PC**, car son cache ARP avait expiré |
 | Autre observation | Requêtes répétées de la box vers `192.168.1.10`, sans réponse (appareil absent) |
 
-![Capture ARP](captures/wireshark-arp.png)
+![Capture ARP](Captures/wireshark-arp.png)
 
 **Ce que j'en retiens :**
 - L'ARP fonctionne dans les deux sens : n'importe quel équipement peut demander la MAC d'une IP du réseau local.
@@ -93,9 +93,9 @@ Séquence observée :
 | Serveur DNS | La box : `192.168.1.1` en IPv4, `fe80::1` en IPv6 |
 | Transport | UDP, port de destination 53 |
 
-![DNS, enregistrement A](captures/wireshark-dns-a.png)
+![DNS, enregistrement A](Captures/wireshark-dns-a.png)
 
-![DNS, enregistrement AAAA](captures/wireshark-dns-aaaa.png)
+![DNS, enregistrement AAAA](Captures/wireshark-dns-aaaa.png)
 
 **Ce que j'en retiens :**
 - **A** associe un nom à une adresse IPv4 (32 bits), **AAAA** à une adresse IPv6 (128 bits).
@@ -126,7 +126,7 @@ Séquence observée :
 | Durée du bail | 86 400 s (1 jour) |
 | Serveur DHCP | `192.168.1.1` |
 
-![Capture DHCP](captures/wireshark-dhcp.png)
+![Capture DHCP](Captures/wireshark-dhcp.png)
 
 **Ce que j'en retiens :**
 - Le Discover est envoyé en **broadcast** car le PC n'a pas d'IP et ne connaît pas le serveur ; il s'identifie avec `0.0.0.0`.
