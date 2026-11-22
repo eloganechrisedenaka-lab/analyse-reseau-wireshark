@@ -46,7 +46,7 @@ Observer sur un réseau réel ce que j'ai configuré en simulation : comprendre 
 | TTL de la réponse | 116 (environ 12 routeurs traversés) |
 | Temps de réponse | 21,1 / 21,4 / 21,9 / 20,8 ms |
 
-![Capture ICMP](captures/wireshark-icmp.png)
+![Capture ICMP](Captures/wireshark-icmp.png)
 
 **Ce que j'en retiens :**
 - Pour joindre une adresse hors du réseau local, le PC envoie la trame à sa **passerelle** : la MAC de destination est celle de la box, l'IP de destination reste celle du serveur final.
@@ -66,7 +66,7 @@ Observer sur un réseau réel ce que j'ai configuré en simulation : comprendre 
 | Particularité | C'est **la box qui a interrogé mon PC**, car son cache ARP avait expiré |
 | Autre observation | Requêtes répétées de la box vers `192.168.1.10`, sans réponse (appareil absent) |
 
-![Capture ARP](captures/wireshark-arp.png)
+![Capture ARP](Captures/wireshark-arp.png)
 
 **Ce que j'en retiens :**
 - L'ARP fonctionne dans les deux sens : n'importe quel équipement peut demander la MAC d'une IP du réseau local.
@@ -93,9 +93,9 @@ Séquence observée :
 | Serveur DNS | La box : `192.168.1.1` en IPv4, `fe80::1` en IPv6 |
 | Transport | UDP, port de destination 53 |
 
-![DNS, enregistrement A](captures/wireshark-dns-a.png)
+![DNS, enregistrement A](Captures/wireshark-dns-a.png)
 
-![DNS, enregistrement AAAA](captures/wireshark-dns-aaaa.png)
+![DNS, enregistrement AAAA](Captures/wireshark-dns-aaaa.png)
 
 **Ce que j'en retiens :**
 - **A** associe un nom à une adresse IPv4 (32 bits), **AAAA** à une adresse IPv6 (128 bits).
@@ -126,7 +126,7 @@ Séquence observée :
 | Durée du bail | 86 400 s (1 jour) |
 | Serveur DHCP | `192.168.1.1` |
 
-![Capture DHCP](captures/wireshark-dhcp.png)
+![Capture DHCP](Captures/wireshark-dhcp.png)
 
 **Ce que j'en retiens :**
 - Le Discover est envoyé en **broadcast** car le PC n'a pas d'IP et ne connaît pas le serveur ; il s'identifie avec `0.0.0.0`.
@@ -159,7 +159,7 @@ Séquence observée :
 
 Délai total entre le premier SYN et le SYN-ACK : **3,36 s**, dont 3 s d'attente. Le vrai temps d'aller-retour, mesuré entre le dernier SYN et le SYN-ACK, est d'environ **349 ms**.
 
-![Poignée de main TCP](captures/wireshark-tcp-handshake.png)
+![Poignée de main TCP](Captures/wireshark-tcp-handshake.png)
 
 **Ce que j'en retiens :**
 - TCP ouvre la connexion en 3 temps (SYN, SYN-ACK, ACK) avant tout échange de données.
@@ -185,7 +185,7 @@ Délai total entre le premier SYN et le SYN-ACK : **3,36 s**, dont 3 s d'attente
 | `Keep-Alive` | `timeout=5, max=100` |
 | Fermeture | `FIN` envoyé par le serveur environ 5 s après la réponse |
 
-![Flux HTTP en clair](captures/wireshark-http-flux.png)
+![Flux HTTP en clair](Captures/wireshark-http-flux.png)
 
 **Ce que j'en retiens :**
 - En HTTP, la requête et la réponse sont lisibles par n'importe qui sur le trajet : site visité, navigateur, système, langue.
@@ -210,7 +210,7 @@ Délai total entre le premier SYN et le SYN-ACK : **3,36 s**, dont 3 s d'attente
 | Suite choisie par le serveur | `TLS_AES_128_GCM_SHA256` |
 | « Suivre le flux TCP » | Contenu illisible (chiffré) |
 
-![Client Hello TLS](captures/wireshark-tls-clienthello.png)
+![Client Hello TLS](Captures/wireshark-tls-clienthello.png)
 
 **Ce que j'en retiens :**
 - La version réellement négociée se lit dans le **Server Hello** (extension `supported_versions`), pas dans la ligne « Record Layer ».
